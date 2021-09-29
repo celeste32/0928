@@ -1,0 +1,122 @@
+#大樂透
+import random
+datas=[]
+for i in range(7):
+    while True:
+        n = random.randint(1,49)
+        flag = True #旗標，表示產生數字成功
+        for d in datas:
+            if n==d:
+                flag = False
+                break #中斷for迴圈
+        if flag:
+            datas.append(n)
+            break #中斷while
+print(datas)
+
+#Tuple 元組
+a = (10,20,30)
+print(a[0])
+b = [10,20,30]
+print(b[0])
+b[0] = 100
+print(b[0]) #印出100
+#a[0] = 100  無法更改
+a = (100,20,30)
+print(a[0])
+c = ()
+d = (10)
+e = (10,) #只有一個元素的tuple
+print(c)
+print(d)
+print(e)
+sumary = 0
+for i in [1,2,3,4,5,6,7,8,9,10]:
+    sumary += i
+print(sumary)
+
+#陣列 Array(Matrix矩陣)
+#1. pip install numpy
+#2. import numpy as np import 輸入,進口 as np 別名
+import numpy as np
+a = np.array([1,2,3,4,5]) #傳入list中
+print(a[0])
+a[0] = 100
+print(a[0])
+#a[5] = 80 #Index error: out of bounds超出邊界  IndexError: index 5 is out of bounds for axis 0 with size 5
+#print(a[5])
+b = np.zeros([10]) #將b陣列初始化為0，一共十個值
+print(f'b的長度：{len(b)}')
+print(b)
+c = [1,2,3]
+#c[4] = 100 #c是陣列，同樣會有超出邊界的問題產生（未append）Index error: out of bounds超出邊界  IndexError: index 5 is out of bounds for axis 0 with size 4
+d = []
+d.append(10)
+print(d)
+C = np.ones([10]) #將C陣列的值初始化為1，一共10個值所以有10個1
+print(C)
+sum = 0
+d = np.zeros([10])
+for i in range(len(d)):
+    d[i] = random.randint(1,1000)
+    sum += i
+print(d)
+print(f'總和：{d.sum()}')
+l = []
+for i in range(10):
+    l.append(random.randint(1,1000))
+sum = 0
+for i in l:
+    sum += i
+print(l)
+print(f'總和：',sum)
+print(f'最小值：{d.min()}')
+print(f'最大值：{d.max()}')
+print(f'標準差：{d.std()}')
+print(f'平均值：{d.mean()}')
+d = np.zeros([10])
+print(d.sum()) #sum()為加總的物件方法(Method)函數
+print(np.sort(d)) #sort為類別方法
+#氣泡排序法(Bubble)
+import numpy as np
+n = 10
+d = np.zeros([n])
+for i in range(len(d)):
+    d[i] = random.randint(1,1000)
+print(d)
+for i in range(n-1):
+    for j in range(i+1,n):
+        if d[i] > d[j]:
+            tmp = d[i]
+            d[i] = d[j]
+            d[j] = tmp
+print(d)
+#二維陣列
+a = np.array([[2,8,4,6],[3,5,9,4],[1,3,5,7]])
+print(a[1][3]) #Java, C/C++使用
+print(a[1,3])
+
+#河圖洛書
+n = 5
+d = np.zeros([n,n])
+index = 1
+x = n//2
+y = 0
+while index <= n*n:
+    d[y,x] = index
+    index += 1
+    if y == 0 and x==n-1:
+        y += 1
+    else:
+        x += 1
+        y -= 1
+        if x > n-1: x=0
+        if y < 0: y=n-1
+        if d[y,x] != 0:
+            x -= 1
+            y += 2
+for i in range(n):
+    for j in range(n):
+        print('%4d' % (d[i][j]),end='')
+    print()
+print(d)
